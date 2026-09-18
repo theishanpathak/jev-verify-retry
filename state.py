@@ -31,6 +31,16 @@ TerminalState = Literal[
     "passed",
 ]
 
+class Spec(BaseModel):
+    """Spec description plus its resolved interface contract."""
+    description: str
+    function_name: str
+    signature: str
+    module_name: str = "solution"
+
+    def as_prompt(self) -> str:
+        return f"{self.description}\n\nSignature: {self.signature}"
+
 
 class BranchState(BaseModel):
     """State for one of the two independent generation branches.
@@ -71,7 +81,7 @@ class GateResult(BaseModel):
 class PipelineState(BaseModel):
     """Top-level graph state for one spec's run through the pipeline."""
 
-    spec: str
+    spec: Spec
     test_branch: BranchState
     code_branch: BranchState
     execution_attempt: int = 0
