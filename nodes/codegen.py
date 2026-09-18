@@ -25,7 +25,7 @@ def codegen_node(state: PipelineState) -> dict[str, object]:
         model=state.code_branch.active_model,
         messages=[
             {"role": "system", "content": CODEGEN_SYSTEM_PROMPT},
-            {"role": "user", "content": state.spec},
+            {"role": "user", "content": state.spec.as_prompt()},
         ],
     )
     code = response.choices[0].message.content or ""
