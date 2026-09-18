@@ -39,7 +39,7 @@ class Spec(BaseModel):
     module_name: str = "solution"
 
     def as_prompt(self) -> str:
-        return f"{self.description}\n\nSignature: {self.signature}"
+        return f"{self.description}\n\nSignature: {self.signature}\nModule: {self.module_name}"
 
 
 class BranchState(BaseModel):
