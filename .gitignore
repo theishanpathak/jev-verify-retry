@@ -9,6 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
+.env
+
 
 # Run logs: keep the folder, ignore what gets generated in it
 logs/*
