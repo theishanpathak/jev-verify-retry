@@ -3,6 +3,7 @@
 from openai import OpenAI
 from config import settings
 from state import PipelineState
+from utils import strip_code_fences
 
 client = OpenAI(api_key=settings.openai_api_key,
                 base_url=settings.openai_base_url)
@@ -24,7 +25,7 @@ def test_gen_node(state: PipelineState) -> dict[str, object]:
             {"role": "user", "content": state.spec.as_prompt()},
         ],
     )
-    tests = response.choices[0].message.content or ""
+    tests = strip_code_fences(response.choices[0].message.content or "")
 
     updated_branch = state.test_branch.model_copy(update={"content": tests})
     return {"test_branch": updated_branch}
