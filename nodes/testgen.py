@@ -3,10 +3,9 @@
 from openai import OpenAI
 from config import settings
 from state import PipelineState
-from utils import strip_code_fences
+from utils import strip_code_fences, build_messages
 
-client = OpenAI(api_key=settings.openai_api_key,
-                base_url=settings.openai_base_url)
+client = OpenAI(api_key=settings.openai_api_key, base_url=settings.openai_base_url)
 
 TESTGEN_SYSTEM_PROMPT = (
     "You are a Python test generator. Given a spec description and an exact "
@@ -20,10 +19,7 @@ def test_gen_node(state: PipelineState) -> dict[str, object]:
     """Generate tests for `state.spec` and update the test branch."""
     response = client.chat.completions.create(
         model=state.test_branch.active_model,
-        messages=[
-            {"role": "system", "content": TESTGEN_SYSTEM_PROMPT},
-            {"role": "user", "content": state.spec.as_prompt()},
-        ],
+        messages=build_messages(TESTGEN_SYSTEM_PROMPT, state.spec, state.test_branch),
     )
     tests = strip_code_fences(response.choices[0].message.content or "")
 

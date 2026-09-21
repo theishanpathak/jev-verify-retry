@@ -3,7 +3,8 @@
 from openai import OpenAI
 from config import settings
 from state import PipelineState
-from utils import strip_code_fences
+from utils import strip_code_fences, build_messages
+
 
 client = OpenAI(api_key=settings.openai_api_key, base_url=settings.openai_base_url)
 
@@ -24,10 +25,7 @@ def codegen_node(state: PipelineState) -> dict[str, object]:
     """
     response = client.chat.completions.create(
         model=state.code_branch.active_model,
-        messages=[
-            {"role": "system", "content": CODEGEN_SYSTEM_PROMPT},
-            {"role": "user", "content": state.spec.as_prompt()},
-        ],
+        messages=build_messages(CODEGEN_SYSTEM_PROMPT, state.spec, state.code_branch),
     )
     code = strip_code_fences(response.choices[0].message.content or "")
 
