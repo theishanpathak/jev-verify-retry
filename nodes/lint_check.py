@@ -51,7 +51,11 @@ def _lint_node(state: PipelineState, branch_name: Branch) -> dict[str, object]:
     branch = state.test_branch if branch_name == "test" else state.code_branch
     result, fixed_content = lint_check(branch_name, branch)
 
-    updated_branch = branch.model_copy(update={"lint_attempt": result.attempt, "content": fixed_content})
+    updated_branch = branch.model_copy(update={
+        "lint_attempt": result.attempt, 
+        "content": fixed_content,
+        "feedback": None if result.passed else result.detail,
+        })
     field = "test_branch" if branch_name == "test" else "code_branch"
     return {field: updated_branch, "gate_results": [result]}
 

@@ -24,6 +24,7 @@ Branch = Literal["test", "code"]
 
 TerminalState = Literal[
     "test_lint_exhausted",
+    "code_lint_exhausted"
     "test_semantic_exhausted",
     "execution_exhausted",
     "code_semantic_rejected",
@@ -57,6 +58,7 @@ class BranchState(BaseModel):
     semantic_attempt: int = 0
     active_model: str
     frozen: bool = False
+    feedback: str | None = None
 
 
 class GateResult(BaseModel):
