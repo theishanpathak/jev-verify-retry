@@ -15,8 +15,8 @@ class Settings(BaseSettings):
     default_code_model: str = "gpt-4.1"
     default_test_model: str = "gpt-4.1"
 
-    # jev_api_key: str  # no default -- fails loudly at startup if missing, rather than running with an empty key
-    # jev_base_url: str = "https://api.typesafe.ai/v1"  # placeholder, confirm the real endpoint
+    jev_api_key: str
+
     # max_lint_attempts: int = 3
     # max_execution_attempts: int = 3
     # confidence_threshold: float = Field(0.7, ge=0.0, le=1.0)

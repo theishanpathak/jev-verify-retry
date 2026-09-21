@@ -8,6 +8,7 @@ dependencies = [
     "langgraph>=1.2.11",
     "openai>=3.14.1",
     "pydantic-settings>=2.15.0",
+    "typesafe-sdk>=0.7.1",
 ]
 
 [dependency-groups]
