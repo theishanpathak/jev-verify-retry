@@ -10,6 +10,7 @@ from config import settings
 from judges.base import VerifierResult
 from state import Spec
 
+
 client = OpenAI(api_key=settings.openai_api_key, base_url=settings.openai_base_url)
 
 JUDGE_SYSTEM_PROMPT = (
@@ -31,7 +32,7 @@ def llm_judge_verify(content: str, spec: Spec) -> VerifierResult:
     """Ask the LLM-as-judge model for a structured verdict."""
     start = time.perf_counter()
     response = client.chat.completions.create(
-        model=settings.default_code_model,
+        model=settings.default_judge_model,
         response_format={"type": "json_object"},
         messages=[
             {"role": "system", "content": JUDGE_SYSTEM_PROMPT},
