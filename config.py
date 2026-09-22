@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     jev_api_key: str
 
     max_lint_attempts: int = 3
+    max_semantic_attempts: int = 3
 
 
 settings = Settings()

@@ -74,10 +74,16 @@ class GateResult(BaseModel):
     branch: Branch | None  # None for "execution": a merge-point gate, not branch-specific
     attempt: int
     model_used: str
+    verifier_used: str | None = None
     passed: bool
     confidence: float | None = None  # populated only at semantic checkpoints
     escalated: bool = False  # True if Jev's confidence triggered an LLM-as-judge call
     detail: str = ""
+
+    issue: str | None = None  # verifier's issue category (wrong_logic, incomplete, ...)
+    latency_seconds: float | None = None  # verifier call time; None for lint gates
+    input_tokens: int | None = None
+    output_tokens: int | None = None
 
 
 class PipelineState(BaseModel):
