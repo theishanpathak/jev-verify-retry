@@ -20,6 +20,7 @@ class Settings(BaseSettings):
 
     max_lint_attempts: int = 3
     max_semantic_attempts: int = 3
+    max_execution_attempts: int = 3
 
 
 settings = Settings()

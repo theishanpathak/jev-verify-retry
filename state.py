@@ -8,6 +8,7 @@ succeeded or failed.
 """
 
 import operator
+from enum import Enum
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
@@ -31,6 +32,25 @@ TerminalState = Literal[
     "human_escalated",
     "passed",
 ]
+
+class EscalationSeverity(str, Enum):
+    critical = "critical"
+    high = "high"
+    medium = "medium"
+    low = "low"
+
+
+class EscalationRecord(BaseModel):
+    """Built when a checkpoint exhausts its retry budget -- buckets the failure
+    by its worst-seen severity so a human reviewer can triage by urgency
+    instead of reading every raw failure individually."""
+    checkpoint: Checkpoint
+    branch: Branch | None
+    spec_description: str
+    severity: EscalationSeverity
+    bucket: str  # the criterion/issue name that drove the severity -- the "why", for grouping
+    attempts_seen: list[str]  # issue per attempt, in order, for the human reviewer's context
+
 
 class Spec(BaseModel):
     """Spec description plus its resolved interface contract."""
