@@ -39,26 +39,17 @@ def jev_verify(content: str, spec: Spec) -> VerifierResult:
     elapsed = time.perf_counter() - start
 
     noul = response.answers["satisfies_spec"].noul
+    passed = noul >= 0.5
+    issue = response.answers["issue_category"].choice
+
+    if not passed and issue == "none":
+        issue = "other"
+
     return VerifierResult(
-        passed=noul >= 0.5,
+        passed=passed,
         confidence=abs(noul - 0.5) * 2,  # distance from the uncertain midpoint
-        issue=response.answers["issue_category"].choice,
+        issue=issue,
         latency_seconds=elapsed,
         input_tokens=response.usage.input_tokens,
         output_tokens=response.usage.output_tokens,
     )
-
-if __name__ == "__main__":
-    from state import Spec
-
-    spec = Spec(
-        description="Return the sum of two integers.",
-        function_name="add_two",
-        signature="def add_two(a: int, b: int) -> int",
-    )
-    correct = "def add_two(a: int, b: int) -> int:\n    return a + b\n"
-    wrong = "def add_two(a: int, b: int) -> int:\n    return a - b\n"
-    edge = "def add_two(a: int, b: str) -> int:\n    return a + int(b)\n"
-
-    for label, code in [("correct", correct), ("wrong", wrong), ("edge", edge)]:
-        print(label, jev_verify(code, spec))
