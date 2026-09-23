@@ -1,0 +1,12 @@
+[
+    {
+        "description": "Return the sum of two integers.",
+        "function_name": "add_two",
+        "signature": "def add_two(a: int, b: int) -> int"
+    },
+    {
+        "description": "Determine if a given linked list contains a cycle.",
+        "function_name": "has_cycle",
+        "signature": "def has_cycle(head: Optional[ListNode]) -> bool"
+    }
+]
