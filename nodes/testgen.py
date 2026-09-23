@@ -11,7 +11,9 @@ TESTGEN_SYSTEM_PROMPT = (
     "You are a Python test generator. Given a spec description and an exact "
     "function signature, write pytest tests that import that function from "
     "the given module name and verify the described behavior. Return only "
-    "the code, no explanation, no markdown fences."
+    "the code, no explanation, no markdown fences. Do not write tests that "
+    "pass arguments of the wrong type -- assume callers respect the "
+    "function's declared parameter types."
 )
 
 
