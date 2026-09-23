@@ -114,6 +114,7 @@ class PipelineState(BaseModel):
     last_traceback: str | None = None
     gate_results: Annotated[list[GateResult], operator.add] = Field(default_factory=list)
     terminal_state: TerminalState | None = None
+    escalation: EscalationRecord | None = None
 
     def final_verdict(self) -> GateResult | None:
         """Return the run's final code_semantic GateResult, if one exists.
