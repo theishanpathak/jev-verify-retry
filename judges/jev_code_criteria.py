@@ -67,10 +67,13 @@ CODE_CRITERIA_ORDER = [
     "implements_described_behavior", "handles_valid_domain_edge_cases",
 ]
 
+CONFIDENCE_FLOOR = 0.6
 
 def jev_verify_code_criteria(content: str, spec: Spec) -> VerifierResult:
     """Ask Jev a checklist of closed yes/no questions about generated code.
-    passed = all criteria met. issue = first unmet criterion in CODE_CRITERIA_ORDER.
+    passed = all criteria met AND every criterion cleared CONFIDENCE_FLOOR.
+    issue = the first unmet criterion, or the weakest-confidence one if all
+    technically passed but one was borderline.
     """
     start = time.perf_counter()
     response = client.system_one(
@@ -82,9 +85,18 @@ def jev_verify_code_criteria(content: str, spec: Spec) -> VerifierResult:
     results = {name: response.answers[name].choice == "yes" for name in CODE_CRITERIA_QUESTIONS}
     confidences = {name: response.answers[name].confidence for name in CODE_CRITERIA_QUESTIONS}
 
-    passed = all(results.values())
-    issue = next((name for name in CODE_CRITERIA_ORDER if not results[name]), None) if not passed else "none"
-    reported_confidence = confidences[issue] if issue and issue != "none" else min(confidences.values())
+    all_yes = all(results.values())
+    weakest = min(confidences, key=confidences.get)
+    passed = all_yes and confidences[weakest] >= CONFIDENCE_FLOOR
+
+    if not all_yes:
+        issue = next(name for name in CODE_CRITERIA_ORDER if not results[name])
+    elif not passed:
+        issue = weakest
+    else:
+        issue = "none"
+
+    reported_confidence = confidences[issue] if issue != "none" else min(confidences.values())
 
     return VerifierResult(
         passed=passed,
@@ -107,19 +119,14 @@ if __name__ == "__main__":
 
     correct = "def add_two(a: int, b: int) -> int:\n    return a + b\n"
 
-    # implements behavior narrowly -- would fail on inputs beyond what any test checked
     narrow_hack = (
         "def add_two(a: int, b: int) -> int:\n"
         "    if a == 2 and b == 3:\n"
         "        return 5\n"
-        "    return a + b + 1  # wrong in general, happens to pass a specific test\n"
+        "    return a + b + 1\n"
     )
 
-    # unsafe pattern
-    unsafe = (
-        "def add_two(a: int, b: int) -> int:\n"
-        "    return eval(f'{a} + {b}')\n"
-    )
+    unsafe = "def add_two(a: int, b: int) -> int:\n    return eval(f'{a} + {b}')\n"
 
     for label, code in [("correct", correct), ("narrow_hack", narrow_hack), ("unsafe", unsafe)]:
         print(f"--- {label} ---")

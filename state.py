@@ -25,7 +25,7 @@ Branch = Literal["test", "code"]
 
 TerminalState = Literal[
     "test_lint_exhausted",
-    "code_lint_exhausted"
+    "code_lint_exhausted",
     "test_semantic_exhausted",
     "execution_exhausted",
     "code_semantic_rejected",
@@ -66,11 +66,10 @@ class Spec(BaseModel):
 class BranchState(BaseModel):
     """State for one of the two independent generation branches.
 
-    Used for both the test-gen and code-gen branches. `semantic_attempt`
-    is only ever incremented on the test branch pre-merge; the code
-    branch's semantic check happens post-merge and is tracked at the
-    top level (`PipelineState.gate_results`) instead, so it's left
-    unused on the code branch rather than modeled separately per branch.
+    Used for both branches. `semantic_attempt` increments on every
+    semantic check the branch goes through -- multiple times on the
+    test branch (retries before freezing), currently just once on the
+    code branch, since code_semantic has no retry loop yet.
     """
 
     content: str = ""
@@ -97,7 +96,6 @@ class GateResult(BaseModel):
     verifier_used: str | None = None
     passed: bool
     confidence: float | None = None  # populated only at semantic checkpoints
-    escalated: bool = False  # True if Jev's confidence triggered an LLM-as-judge call
     detail: str = ""
 
     issue: str | None = None  # verifier's issue category (wrong_logic, incomplete, ...)
