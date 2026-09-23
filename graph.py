@@ -43,15 +43,39 @@ def reset_code_lint(state: PipelineState) -> dict[str, object]:
 
 
 def mark_test_lint_exhausted(state: PipelineState) -> dict[str, object]:
-    return {"terminal_state": "test_lint_exhausted"}
+    escalation = EscalationRecord(
+        checkpoint="test_lint", branch="test",
+        spec_description=state.spec.description,
+        severity=EscalationSeverity.high,  # can't even produce valid test code
+        bucket="test_lint_exhausted",
+        attempts_seen=["test_lint_exhausted"] * state.test_branch.lint_attempt,
+    )
+    print("ESCALATED:", escalation)
+    return {"terminal_state": "test_lint_exhausted", "escalation": escalation}
 
 
 def mark_code_lint_exhausted(state: PipelineState) -> dict[str, object]:
-    return {"terminal_state": "code_lint_exhausted"}
+    escalation = EscalationRecord(
+        checkpoint="code_lint", branch="code",
+        spec_description=state.spec.description,
+        severity=EscalationSeverity.high,
+        bucket="code_lint_exhausted",
+        attempts_seen=["code_lint_exhausted"] * state.code_branch.lint_attempt,
+    )
+    print("ESCALATED:", escalation)
+    return {"terminal_state": "code_lint_exhausted", "escalation": escalation}
 
 
 def mark_execution_exhausted(state: PipelineState) -> dict[str, object]:
-    return {"terminal_state": "execution_exhausted"}
+    escalation = EscalationRecord(
+        checkpoint="execution", branch=None,
+        spec_description=state.spec.description,
+        severity=EscalationSeverity.critical,  # code never actually works -- worse than a coverage gap
+        bucket="execution_exhausted",
+        attempts_seen=["execution_exhausted"] * state.execution_attempt,
+    )
+    print("ESCALATED:", escalation)
+    return {"terminal_state": "execution_exhausted", "escalation": escalation}
 
 
 def mark_test_semantic_exhausted(state: PipelineState) -> dict[str, object]:
@@ -63,7 +87,7 @@ def mark_test_semantic_exhausted(state: PipelineState) -> dict[str, object]:
         severity=severity, bucket=bucket, attempts_seen=issues,
     )
     print("ESCALATED:", escalation)
-    return {"terminal_state": "test_semantic_exhausted"}
+    return {"terminal_state": "test_semantic_exhausted", "escalation": escalation}
 
 
 def mark_passed(state: PipelineState) -> dict[str, object]:
@@ -80,7 +104,7 @@ def mark_code_semantic_rejected(state: PipelineState) -> dict[str, object]:
         bucket=result.issue, attempts_seen=[result.issue],
     )
     print("ESCALATED:", escalation)
-    return {"terminal_state": "code_semantic_rejected"}
+    return {"terminal_state": "code_semantic_rejected", "escalation": escalation}
 
 
 def route_test_lint(state: PipelineState) -> str:
