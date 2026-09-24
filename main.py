@@ -28,7 +28,18 @@ SHIPPED_WOULD_BE_WRONG = {"code_semantic_rejected", "execution_exhausted"}
 # Earlier-stage failures: generation never even produced something coherent
 # enough to reach the "almost shippable" stage. Useful for prompt/pipeline
 # improvement, but a different kind of signal than the bucket above.
-GENERATION_STUCK = {"test_lint_exhausted", "code_lint_exhausted", "test_semantic_exhausted"}
+GENERATION_STUCK = {"test_lint_exhausted",
+                    "code_lint_exhausted", "test_semantic_exhausted"}
+
+JEV_INPUT_RATE = 0.042 / 1_000_000  # $/token, output is free
+
+OPENAI_RATES = {  # (input $/token, output $/token)
+    "gpt-4.1": (1.00 / 1_000_000, 4.00 / 1_000_000),
+    "gpt-4.1-mini": (0.20 / 1_000_000, 0.80 / 1_000_000),
+    "gpt-4.1-nano": (0.05 / 1_000_000, 0.20 / 1_000_000),
+    "gpt-4o": (1.25 / 1_000_000, 5.00 / 1_000_000),
+    "gpt-4o-mini": (0.075 / 1_000_000, 0.30 / 1_000_000),
+}
 
 
 def classify(terminal_state: str) -> str:
@@ -40,6 +51,26 @@ def classify(terminal_state: str) -> str:
     if terminal_state in GENERATION_STUCK:
         return "generation_stuck"
     return "unknown"
+
+
+def resolve_judge(judge_flag: str) -> str:
+    """CLI flag ("jev"/"llm") -> the real name this run is recorded under.
+    "jev" stays "jev". "llm" resolves to whichever model is currently
+    configured, so results/prints reflect what actually ran."""
+    return "jev" if judge_flag == "jev" else settings.default_judge_model
+
+
+def judge_cost(judge: str, input_tokens: int, output_tokens: int) -> float:
+    """Compute real $ cost for a judge's token usage, using the judge name
+    stored in the results themselves -- never live config, so cost is always
+    computed against whatever actually ran, not whatever .env says right now."""
+    if judge == "jev":
+        return input_tokens * JEV_INPUT_RATE
+    if judge not in OPENAI_RATES:
+        raise ValueError(
+            f"no pricing known for judge {judge!r} -- add it to OPENAI_RATES")
+    in_rate, out_rate = OPENAI_RATES[judge]
+    return input_tokens * in_rate + output_tokens * out_rate
 
 
 def load_specs(path: Path) -> list[Spec]:
@@ -63,18 +94,23 @@ class RunSummary:
     spec_description: str
     judge: str
     terminal_state: str | None
-    wall_time: float = 0.0  # full graph.invoke() time: generation, lint, execution, judging, retries
+    # full graph.invoke() time: generation, lint, execution, judging, retries
+    wall_time: float = 0.0
     checkpoints: list[dict] = field(default_factory=list)
-    total_latency: float = 0.0  # judge-call latency only (lint/execution contribute nothing)
+    # judge-call latency only (lint/execution contribute nothing)
+    total_latency: float = 0.0
     total_input_tokens: int = 0
     total_output_tokens: int = 0
-    attempts: dict[str, int] = field(default_factory=dict)  # checkpoint -> max attempt seen
-    escalation: dict | None = None  # EscalationRecord as a plain dict, or None if the run passed
+    # checkpoint -> max attempt seen
+    attempts: dict[str, int] = field(default_factory=dict)
+    # EscalationRecord as a plain dict, or None if the run passed
+    escalation: dict | None = None
 
 
-def run_spec(spec: Spec, judge: str) -> RunSummary:
+def run_spec(spec: Spec, judge_flag: str) -> RunSummary:
     """Run one spec through one judge config end to end, summarize the result."""
-    graph = build_graph(judge)
+    judge = resolve_judge(judge_flag)
+    graph = build_graph(judge_flag)
     initial_state = PipelineState(
         spec=spec,
         test_branch=BranchState(active_model=settings.default_test_model),
@@ -86,7 +122,8 @@ def run_spec(spec: Spec, judge: str) -> RunSummary:
     wall_time = time.perf_counter() - start
 
     escalation = result.get("escalation")
-    escalation_dict = escalation.model_dump(mode="json") if escalation else None
+    escalation_dict = escalation.model_dump(
+        mode="json") if escalation else None
 
     summary = RunSummary(
         spec_id=spec.function_name, spec_description=spec.description,
@@ -106,7 +143,8 @@ def run_spec(spec: Spec, judge: str) -> RunSummary:
             summary.total_input_tokens += r.input_tokens
         if r.output_tokens:
             summary.total_output_tokens += r.output_tokens
-        summary.attempts[r.checkpoint] = max(summary.attempts.get(r.checkpoint, 0), r.attempt)
+        summary.attempts[r.checkpoint] = max(
+            summary.attempts.get(r.checkpoint, 0), r.attempt)
     return summary
 
 
@@ -133,7 +171,7 @@ def print_summary(s: RunSummary) -> None:
 
 
 def rollup(results: list[dict], label: str) -> None:
-    """Print one judge's batch-level stats: outcome buckets, timing, tokens, escalations."""
+    """Print one judge's batch-level stats: outcome buckets, timing, tokens, cost, escalations."""
     n = len(results)
     buckets = {"passed": 0, "shipped_would_be_wrong": 0, "generation_stuck": 0}
     for r in results:
@@ -144,8 +182,13 @@ def rollup(results: list[dict], label: str) -> None:
     total_in = sum(r["total_input_tokens"] for r in results)
     total_out = sum(r["total_output_tokens"] for r in results)
 
-    print(f"[{label}] n={n}")
-    print(f"  passed:                 {buckets['passed']}/{n} ({100 * buckets['passed'] / n:.0f}%)")
+    # every record in one file shares the same judge
+    judge = results[0]["judge"]
+    total_cost = judge_cost(judge, total_in, total_out)
+
+    print(f"[{label}] n={n}  (judge={judge})")
+    print(
+        f"  passed:                 {buckets['passed']}/{n} ({100 * buckets['passed'] / n:.0f}%)")
     print(f"  shipped_would_be_wrong: {buckets['shipped_would_be_wrong']}/{n} "
           f"({100 * buckets['shipped_would_be_wrong'] / n:.0f}%)")
     print(f"  generation_stuck:       {buckets['generation_stuck']}/{n} "
@@ -153,12 +196,14 @@ def rollup(results: list[dict], label: str) -> None:
     print(f"  avg wall time:          {avg_wall:.2f}s")
     print(f"  avg judge latency:      {avg_judge_latency:.2f}s")
     print(f"  total judge tokens:     {total_in} in / {total_out} out")
+    print(f"  total judge cost:       ${total_cost:.6f}")
 
     escalations = [r["escalation"] for r in results if r["escalation"]]
     if escalations:
         print(f"  escalations ({len(escalations)}):")
         for e in escalations:
-            print(f"    [{e['severity']:<8}] {e['checkpoint']:<14} bucket={e['bucket']}")
+            print(
+                f"    [{e['severity']:<8}] {e['checkpoint']:<14} bucket={e['bucket']}")
     print()
 
 
@@ -185,46 +230,70 @@ def print_comparison(jev_results: list[dict], llm_results: list[dict]) -> None:
 
         both_escalated = j["escalation"] and l["escalation"]
         if both_escalated and (j_state != l_state or j["escalation"]["bucket"] != l["escalation"]["bucket"]):
-            print(f"      jev flagged:  {j['escalation']['bucket']} (severity={j['escalation']['severity']})")
-            print(f"      llm flagged:  {l['escalation']['bucket']} (severity={l['escalation']['severity']})")
+            print(
+                f"      jev flagged:  {j['escalation']['bucket']} (severity={j['escalation']['severity']})")
+            print(
+                f"      llm flagged:  {l['escalation']['bucket']} (severity={l['escalation']['severity']})")
     print()
 
     print("=== rollup ===")
     rollup(jev_results, "jev")
     rollup(llm_results, "llm")
 
+    jev_judge = jev_results[0]["judge"]
+    llm_judge = llm_results[0]["judge"]
+    jev_cost = judge_cost(jev_judge, sum(r["total_input_tokens"] for r in jev_results),
+                          sum(r["total_output_tokens"] for r in jev_results))
+    llm_cost = judge_cost(llm_judge, sum(r["total_input_tokens"] for r in llm_results),
+                          sum(r["total_output_tokens"] for r in llm_results))
+
+    print("=== cost comparison ===")
+    if jev_cost > 0:
+        ratio = llm_cost / jev_cost
+        cheaper = "jev" if ratio > 1 else llm_judge
+        print(f"  {jev_judge}: ${jev_cost:.6f}   {llm_judge}: ${llm_cost:.6f}")
+        print(f"  {cheaper} is {max(ratio, 1/ratio):.1f}x cheaper at these rates")
+    print()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--judge", choices=["jev", "llm"], default="jev",
-                         help="which judge gates this run")
+                        help="which judge gates this run")
     parser.add_argument("--batch", action="store_true",
-                         help="run every spec in the spec file through --judge, save results to disk")
+                        help="run every spec in the spec file through --judge, save results to disk")
     parser.add_argument("--compare", action="store_true",
-                         help="read results_jev.json and results_llm.json, print comparison (no API calls)")
+                        help="read two saved results files and print a comparison (no API calls)")
+    parser.add_argument("--compare-jev", type=Path, default=Path("results_jev.json"),
+                        help="path to the jev results file")
+    parser.add_argument("--compare-llm", type=Path, default=None,
+                        help="path to the llm-judge results file (required with --compare)")
     parser.add_argument("--spec-file", type=Path, default=DEFAULT_SPECS_FILE)
     parser.add_argument("--spec-index", type=int, default=0,
-                         help="which spec in the file to run for a single-spec run")
+                        help="which spec in the file to run for a single-spec run")
     args = parser.parse_args()
 
     if args.compare:
-        jev_results = load_results(Path("results_jev.json"))
-        llm_results = load_results(Path("results_llm.json"))
+        if args.compare_llm is None:
+            parser.error("--compare requires --compare-llm PATH (the llm results file to compare against)")
+        jev_results = load_results(args.compare_jev)
+        llm_results = load_results(args.compare_llm)
         print_comparison(jev_results, llm_results)
         raise SystemExit
 
     specs = load_specs(args.spec_file)
+    judge = resolve_judge(args.judge)
 
     print(f"provider: {settings.openai_base_url}")
     print(f"models: code={settings.default_code_model} test={settings.default_test_model} "
-          f"judge={settings.default_judge_model}")
+          f"judge={judge}")
     print()
 
     if args.batch:
         results = [run_spec(spec, args.judge) for spec in specs]
         for s in results:
             print_summary(s)
-        out_path = save_batch_results(results, args.judge)
+        out_path = save_batch_results(results, judge)
         print(f"saved to {out_path}")
     else:
         spec = specs[args.spec_index]
