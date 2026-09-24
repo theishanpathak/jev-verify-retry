@@ -1,0 +1,1689 @@
+[
+  {
+    "spec_id": "add_two",
+    "spec_description": "Return the sum of two integers.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 4.9757791250012815,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.1428999999770895,
+        "input_tokens": 581,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.883566125005018,
+        "input_tokens": 361,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.0264661249821074,
+    "total_input_tokens": 942,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "is_palindrome",
+    "spec_description": "Return True if the given string is a palindrome, ignoring case.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 6.131471416971181,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.305044166976586,
+        "input_tokens": 533,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.9327515000477433,
+        "input_tokens": 373,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.2377956670243293,
+    "total_input_tokens": 906,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "factorial",
+    "spec_description": "Return the factorial of a non-negative integer.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 5.217314958048519,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.265554334037006,
+        "input_tokens": 502,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.24755908298539,
+        "input_tokens": 394,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.513113417022396,
+    "total_input_tokens": 896,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "reverse_words",
+    "spec_description": "Reverse the order of words in a sentence, preserving single spaces between words.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 5.314624999999069,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4032876669662073,
+        "input_tokens": 544,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.914520708960481,
+        "input_tokens": 373,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.3178083759266883,
+    "total_input_tokens": 917,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "count_vowels",
+    "spec_description": "Count the number of vowels (a, e, i, o, u, case-insensitive) in a string.",
+    "judge": "gpt-4o",
+    "terminal_state": "execution_exhausted",
+    "wall_time": 8.867242374981288,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.5738614170113578,
+        "input_tokens": 575,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 2,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 3,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      }
+    ],
+    "total_latency": 1.5738614170113578,
+    "total_input_tokens": 575,
+    "total_output_tokens": 120,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 3
+    },
+    "escalation": {
+      "checkpoint": "execution",
+      "branch": null,
+      "spec_description": "Count the number of vowels (a, e, i, o, u, case-insensitive) in a string.",
+      "severity": "critical",
+      "bucket": "execution_exhausted",
+      "attempts_seen": [
+        "execution_exhausted",
+        "execution_exhausted",
+        "execution_exhausted"
+      ]
+    }
+  },
+  {
+    "spec_id": "flatten_list",
+    "spec_description": "Flatten a list that may contain nested lists of integers into a single flat list of integers.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 7.915207125013694,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.3845019160071388,
+        "input_tokens": 769,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 0.9,
+        "issue": "none",
+        "latency": 1.2205601659952663,
+        "input_tokens": 407,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.605062082002405,
+    "total_input_tokens": 1176,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "most_common_word",
+    "spec_description": "Return the most frequently occurring word in a string, ignoring case and punctuation.",
+    "judge": "gpt-4o",
+    "terminal_state": "test_lint_exhausted",
+    "wall_time": 7.599190582986921,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_lint",
+        "attempt": 2,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_lint",
+        "attempt": 3,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      }
+    ],
+    "total_latency": 0.0,
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "attempts": {
+      "test_lint": 3
+    },
+    "escalation": {
+      "checkpoint": "test_lint",
+      "branch": "test",
+      "spec_description": "Return the most frequently occurring word in a string, ignoring case and punctuation.",
+      "severity": "high",
+      "bucket": "test_lint_exhausted",
+      "attempts_seen": [
+        "test_lint_exhausted",
+        "test_lint_exhausted",
+        "test_lint_exhausted"
+      ]
+    }
+  },
+  {
+    "spec_id": "is_prime",
+    "spec_description": "Return True if the given integer is a prime number.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 6.003071875020396,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.425175999989733,
+        "input_tokens": 601,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.1278884580242448,
+        "input_tokens": 450,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.553064458013978,
+    "total_input_tokens": 1051,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "merge_sorted_lists",
+    "spec_description": "Merge two already-sorted lists of integers into a single sorted list.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 7.671916082967073,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4719202920095995,
+        "input_tokens": 822,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.1448685840005055,
+        "input_tokens": 462,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.616788876010105,
+    "total_input_tokens": 1284,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "has_cycle",
+    "spec_description": "Determine if a given linked list contains a cycle.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 10.539347959042061,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_lint",
+        "attempt": 2,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.6204622500226833,
+        "input_tokens": 843,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.9368475000374019,
+        "input_tokens": 430,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.557309750060085,
+    "total_input_tokens": 1273,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 2,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "reverse_linked_list",
+    "spec_description": "Reverse a singly linked list and return the new head.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 5.773398792021908,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.2790134589886293,
+        "input_tokens": 741,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.889122041000519,
+        "input_tokens": 438,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.1681354999891482,
+    "total_input_tokens": 1179,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "max_depth",
+    "spec_description": "Return the maximum depth of a binary tree.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 6.497807084000669,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.1968438749900088,
+        "input_tokens": 719,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.2068715000059456,
+        "input_tokens": 440,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.4037153749959543,
+    "total_input_tokens": 1159,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "is_valid_bst",
+    "spec_description": "Determine if a binary tree is a valid binary search tree.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 9.213567874976434,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.3947030830313452,
+        "input_tokens": 1088,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.3078818749636412,
+        "input_tokens": 474,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.7025849579949863,
+    "total_input_tokens": 1562,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "make_lru_cache",
+    "spec_description": "Implement a least-recently-used (LRU) cache with a fixed capacity, supporting get and put operations.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 16.064946333004627,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.2969948750105686,
+        "input_tokens": 1211,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 2,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 2,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.0794516670284793,
+        "input_tokens": 776,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.376446542039048,
+    "total_input_tokens": 1987,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 2,
+      "execution": 2,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "make_min_stack",
+    "spec_description": "Implement a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 8.188431290967856,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.5060100000118837,
+        "input_tokens": 913,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4070008330163546,
+        "input_tokens": 545,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.9130108330282383,
+    "total_input_tokens": 1458,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "evaluate_expression",
+    "spec_description": "Return the result of evaluating a math expression given as a string.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 8.564614709001034,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4738787920214236,
+        "input_tokens": 800,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.0945932500180788,
+        "input_tokens": 635,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.5684720420395024,
+    "total_input_tokens": 1435,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "is_valid_brackets",
+    "spec_description": "Determine if a string containing only brackets ({}, [], ()) has all brackets validly matched and nested.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 6.380544290994294,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.2564735829946585,
+        "input_tokens": 563,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.0310342499869876,
+        "input_tokens": 458,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.287507832981646,
+    "total_input_tokens": 1021,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "run_length_encode",
+    "spec_description": "Compress a string using run-length encoding (e.g. 'aaabb' becomes 'a3b2').",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 6.035421375010628,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.2983298340113834,
+        "input_tokens": 593,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 0.9425092919846065,
+        "input_tokens": 453,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.24083912599599,
+    "total_input_tokens": 1046,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "levenshtein_distance",
+    "spec_description": "Compute the Levenshtein (edit) distance between two strings.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 8.334463416947983,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.7552253749454394,
+        "input_tokens": 755,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.0788782089948654,
+        "input_tokens": 569,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.834103583940305,
+    "total_input_tokens": 1324,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "topological_sort",
+    "spec_description": "Given a list of directed edges representing task dependencies, return a valid order to complete all tasks, or an empty list if no valid order exists due to a cycle.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 7.099794124951586,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4995809170068242,
+        "input_tokens": 866,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.0350333749665879,
+        "input_tokens": 542,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.534614291973412,
+    "total_input_tokens": 1408,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 1,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "parse_csv_line",
+    "spec_description": "Parse a single line of CSV-formatted text into a list of field strings, correctly handling fields wrapped in double quotes that may contain commas.",
+    "judge": "gpt-4o",
+    "terminal_state": "passed",
+    "wall_time": 14.027451166999526,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 0.9,
+        "issue": "none",
+        "latency": 1.5032915420015343,
+        "input_tokens": 831,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 2,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 3,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 0.9,
+        "issue": "none",
+        "latency": 1.0245751659967937,
+        "input_tokens": 589,
+        "output_tokens": 84
+      }
+    ],
+    "total_latency": 2.527866707998328,
+    "total_input_tokens": 1420,
+    "total_output_tokens": 204,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 3,
+      "code_semantic": 1
+    },
+    "escalation": null
+  },
+  {
+    "spec_id": "make_rate_limiter",
+    "spec_description": "Implement a simple rate limiter that allows at most N requests per fixed time window of W seconds, given the current time in seconds for each request check.",
+    "judge": "gpt-4o",
+    "terminal_state": "execution_exhausted",
+    "wall_time": 11.692318292043637,
+    "checkpoints": [
+      {
+        "checkpoint": "test_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "test_semantic",
+        "attempt": 1,
+        "passed": true,
+        "confidence": 1.0,
+        "issue": "none",
+        "latency": 1.4060531670111232,
+        "input_tokens": 1084,
+        "output_tokens": 120
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 1,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 2,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "code_lint",
+        "attempt": 1,
+        "passed": true,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      },
+      {
+        "checkpoint": "execution",
+        "attempt": 3,
+        "passed": false,
+        "confidence": null,
+        "issue": null,
+        "latency": null,
+        "input_tokens": null,
+        "output_tokens": null
+      }
+    ],
+    "total_latency": 1.4060531670111232,
+    "total_input_tokens": 1084,
+    "total_output_tokens": 120,
+    "attempts": {
+      "test_lint": 1,
+      "test_semantic": 1,
+      "code_lint": 1,
+      "execution": 3
+    },
+    "escalation": {
+      "checkpoint": "execution",
+      "branch": null,
+      "spec_description": "Implement a simple rate limiter that allows at most N requests per fixed time window of W seconds, given the current time in seconds for each request check.",
+      "severity": "critical",
+      "bucket": "execution_exhausted",
+      "attempts_seen": [
+        "execution_exhausted",
+        "execution_exhausted",
+        "execution_exhausted"
+      ]
+    }
+  }
+]

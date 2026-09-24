@@ -5,8 +5,108 @@
         "signature": "def add_two(a: int, b: int) -> int"
     },
     {
+        "description": "Return True if the given string is a palindrome, ignoring case.",
+        "function_name": "is_palindrome",
+        "signature": "def is_palindrome(s: str) -> bool"
+    },
+    {
+        "description": "Return the factorial of a non-negative integer.",
+        "function_name": "factorial",
+        "signature": "def factorial(n: int) -> int"
+    },
+    {
+        "description": "Reverse the order of words in a sentence, preserving single spaces between words.",
+        "function_name": "reverse_words",
+        "signature": "def reverse_words(sentence: str) -> str"
+    },
+    {
+        "description": "Count the number of vowels (a, e, i, o, u, case-insensitive) in a string.",
+        "function_name": "count_vowels",
+        "signature": "def count_vowels(s: str) -> int"
+    },
+    {
+        "description": "Flatten a list that may contain nested lists of integers into a single flat list of integers.",
+        "function_name": "flatten_list",
+        "signature": "def flatten_list(nested: list) -> list[int]"
+    },
+    {
+        "description": "Return the most frequently occurring word in a string, ignoring case and punctuation.",
+        "function_name": "most_common_word",
+        "signature": "def most_common_word(text: str) -> str"
+    },
+    {
+        "description": "Return True if the given integer is a prime number.",
+        "function_name": "is_prime",
+        "signature": "def is_prime(n: int) -> bool"
+    },
+    {
+        "description": "Merge two already-sorted lists of integers into a single sorted list.",
+        "function_name": "merge_sorted_lists",
+        "signature": "def merge_sorted_lists(a: list[int], b: list[int]) -> list[int]"
+    },
+    {
         "description": "Determine if a given linked list contains a cycle.",
         "function_name": "has_cycle",
         "signature": "def has_cycle(head: Optional[ListNode]) -> bool"
+    },
+    {
+        "description": "Reverse a singly linked list and return the new head.",
+        "function_name": "reverse_linked_list",
+        "signature": "def reverse_linked_list(head: Optional[ListNode]) -> Optional[ListNode]"
+    },
+    {
+        "description": "Return the maximum depth of a binary tree.",
+        "function_name": "max_depth",
+        "signature": "def max_depth(root: Optional[TreeNode]) -> int"
+    },
+    {
+        "description": "Determine if a binary tree is a valid binary search tree.",
+        "function_name": "is_valid_bst",
+        "signature": "def is_valid_bst(root: Optional[TreeNode]) -> bool"
+    },
+    {
+        "description": "Implement a least-recently-used (LRU) cache with a fixed capacity, supporting get and put operations.",
+        "function_name": "make_lru_cache",
+        "signature": "def make_lru_cache(capacity: int) -> LRUCache"
+    },
+    {
+        "description": "Implement a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+        "function_name": "make_min_stack",
+        "signature": "def make_min_stack() -> MinStack"
+    },
+    {
+        "description": "Return the result of evaluating a math expression given as a string.",
+        "function_name": "evaluate_expression",
+        "signature": "def evaluate_expression(expr: str) -> float"
+    },
+    {
+        "description": "Determine if a string containing only brackets ({}, [], ()) has all brackets validly matched and nested.",
+        "function_name": "is_valid_brackets",
+        "signature": "def is_valid_brackets(s: str) -> bool"
+    },
+    {
+        "description": "Compress a string using run-length encoding (e.g. 'aaabb' becomes 'a3b2').",
+        "function_name": "run_length_encode",
+        "signature": "def run_length_encode(s: str) -> str"
+    },
+    {
+        "description": "Compute the Levenshtein (edit) distance between two strings.",
+        "function_name": "levenshtein_distance",
+        "signature": "def levenshtein_distance(a: str, b: str) -> int"
+    },
+    {
+        "description": "Given a list of directed edges representing task dependencies, return a valid order to complete all tasks, or an empty list if no valid order exists due to a cycle.",
+        "function_name": "topological_sort",
+        "signature": "def topological_sort(num_tasks: int, edges: list[tuple[int, int]]) -> list[int]"
+    },
+    {
+        "description": "Parse a single line of CSV-formatted text into a list of field strings, correctly handling fields wrapped in double quotes that may contain commas.",
+        "function_name": "parse_csv_line",
+        "signature": "def parse_csv_line(line: str) -> list[str]"
+    },
+    {
+        "description": "Implement a simple rate limiter that allows at most N requests per fixed time window of W seconds, given the current time in seconds for each request check.",
+        "function_name": "make_rate_limiter",
+        "signature": "def make_rate_limiter(max_requests: int, window_seconds: float) -> RateLimiter"
     }
 ]
