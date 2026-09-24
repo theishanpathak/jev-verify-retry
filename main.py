@@ -290,9 +290,12 @@ if __name__ == "__main__":
     print()
 
     if args.batch:
-        results = [run_spec(spec, args.judge) for spec in specs]
-        for s in results:
-            print_summary(s)
+        results = []
+        for i, spec in enumerate(specs):
+            results.append(run_spec(spec, args.judge))
+            print_summary(results[-1])
+            if i < len(specs) - 1:
+                time.sleep(5)  # brief pause between specs to ease TPM rate-limit pressure
         out_path = save_batch_results(results, judge)
         print(f"saved to {out_path}")
     else:
